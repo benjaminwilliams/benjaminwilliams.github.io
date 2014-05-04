@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html id="ng-app" ng-app="oshcPrototypeApp">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="stylesheet" href="css/bootstrap.min.css">
+
+        <link rel="stylesheet" href="css/bootstrap-theme.min.css">
+        <link rel="stylesheet" href="css/main.css">
+
+        <script src="js/vendor/modernizr-2.6.2-respond-1.1.0.min.js"></script>
+        <script src="js/vendor/angular.js"></script>
+        <script src="js/vendor/angular-resource.min.js"></script>
+        <script src="js/app/app.js"></script>
+    </head>
+    <body>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <h3>OSHC JOIN prototype</h3>
+                <h1>Personal Details</h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4 block2">
+                <div>
+                    <span>nib OSHC</span> <span class="pull-right"><a href="#">edit</a></span>
+                </div>
+                <div>12/09/2014 - 20/12/2016</div>
+                <div>Single</div>
+                <div>$1598.39 AUD</div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4 block1">
+                <form name="join_form" novalidate ng-submit="joinForm()" class="mt-30 ">
+                    <div class="form-group">
+                        <label for="firstName">First name</label>
+                        <input
+                            ng-model="firstName"
+                            name="firstName"
+                            class="form-control"
+                            required
+                            type="text"
+                            id="firstName"
+                            ng-maxlength="24"
+                            placeholder=""
+                            validate-alphanumeric
+                        >
+                        <div class="tick" ng-show="join_form.firstName.$dirty && join_form.firstName.$valid"></div>
+                        <div class="error"
+                             ng-show="join_form.firstName.$dirty && join_form.firstName.$invalid">
+                            <small class="error"
+                                   ng-show="join_form.firstName && join_form.firstName.$error.required">
+                                Your name is required.
+                            </small>
+                            <small class="error"
+                                   ng-show="join_form.firstName.$error.maxlength">
+                                Your name cannot be longer than 24 characters
+                            </small>
+                            <small class="error"
+                                   ng-show="join_form.firstName.$error.validCharacters">
+                                Please only use letters and numbers.
+                            </small>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="lastName">Family name</label>
+                        <input
+                            ng-model="lastName"
+                            name="lastName"
+                            class="form-control"
+                            required
+                            type="text"
+                            id="lastName"
+                            ng-maxlength="24"
+                            ng-minlength="4"
+                            placeholder=""
+                            validate-alphanumeric
+                            >
+                        <div class="tick" ng-show="join_form.lastName.$dirty && join_form.firstName.$valid"></div>
+                        <div class="error"
+                             ng-show="join_form.lastName.$dirty && join_form.lastName.$invalid">
+                            <small class="error"
+                                   ng-show="join_form.lastName && join_form.lastName.$error.required">
+                                Your name is required.
+                            </small>
+                            <small class="error"
+                                   ng-show="join_form.lastName.$error.maxlength">
+                                Your name cannot be longer than 24 characters
+                            </small>
+                            <small class="error"
+                                   ng-show="join_form.lastName.$error.validCharacters">
+                                Please only use letters and numbers.
+                            </small>
+                            <small class="error"
+                                   ng-show="join_form.lastName.$error.minlength">
+                                too short
+                            </small>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email address</label>
+                        <input
+                            ng-model="text"
+                            name="email"
+                            class="form-control"
+                            required
+                            type="email"
+                            id="email"
+                            placeholder=""
+                            >
+                        <div class="tick" ng-show="join_form.email.$dirty && join_form.firstName.$valid"></div>
+                        <div class="error"
+                             ng-show="join_form.email.$dirty && join_form.email.$invalid">
+                            <small class="error"
+                                   ng-show="join_form.email && join_form.email.$error.required">
+                                Please enter an email address
+                            </small>
+                            <small class="error"
+                                   ng-show="join_form.email.$error.email">
+                                Not a valid email address
+                            </small>
+                        </div>
+                    </div>
+
+                    <div class="">
+                        <div>
+                            <label>Gender</label>
+                        </div>
+                        <div class="radio-inline">
+                            <label>
+                                <input  ng-model="text" type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked>
+                                Male
+                            </label>
+                        </div>
+                        <div class="radio-inline">
+                            <label>
+                                <input  ng-model="text" type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked>
+                                Female
+                            </label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="dob">Date of birth</label>
+                        <input  ng-model="text" type="date" class="form-control" id="dob" placeholder="">
+                    </div>
+                    <div class="form-group" ng-controller="oshcPrototypeCtrl">
+                        <label for="coo">Country of origin</label>
+                        <select id="coo" type="text" list="country" placeholder="Search...">
+                            <option ng-repeat="country in countries"> {{country.name}}</option>
+                        </select>
+
+                    </div>
+                    <div class="checkbox mt-30">
+                        <label>
+                            <input  ng-model="text" type="checkbox"> I have read and accept to the nib OSHC <a href="">terms and conditions</a>
+                        </label>
+                    </div>
+                    <button type="submit" ng-disabled="join_form.$invalid" class="btn btn-info mt-30 pull-right">Continue to payment <span class="glyphicon glyphicon-chevron-right"></span></button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <hr>
+                <footer>
+                    <p>&copy; nib 2014</p>
+                </footer>
+            </div>
+        </div>
+    </div>
+    <script src="js/main.js"></script>
+    </body>
+</html>

@@ -1,0 +1,58 @@
+
+
+/* ==========================================================================
+   Author's custom styles
+   ========================================================================== */
+
+body {
+  padding-top: 50px;
+  padding-bottom: 20px;
+}
+
+.mt-30 {
+  margin-top: 30px;
+}
+
+.block1 {
+  margin: 20px 0;
+  padding: 20px;
+  border: 1px solid #eee;
+  background-color: #fcfcfc;
+}
+
+.block2 {
+  margin: 20px 0;
+  padding: 20px;
+  border: 1px dashed #ccc;
+  background-color: #fafafa;
+}
+
+.form-group {
+  margin-bottom: 30px;
+}
+
+
+
+.error {
+  padding: 10px;
+  background-color: #de4b38;
+  color: #fff;
+}
+
+.tick {
+  display: inline-block;
+  width: 10px;
+  height: 30px;
+  background-color: green;
+  float:right;
+  position: relative;
+  top: -32px;
+  right: 5px;
+}
+
+
+
+
+
+
+
