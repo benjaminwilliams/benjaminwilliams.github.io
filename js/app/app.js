@@ -1,11 +1,47 @@
-var oshcPrototypeApp = angular.module('oshcPrototypeApp', ['ngResource']);
+
+// App
+//
+var oshcPrototypeApp = angular.module('oshcPrototypeApp', [
+  'ngRoute', // Used to route partials within a SPA
+  'ngResource', // Used to get resources, in the prototype we are are using it to get a json file
+  'oshcPrototypeControllers' // Our custom controllers
+]);
+
+oshcPrototypeApp.config(['$routeProvider',
+
+  /**
+   * Defines the routes that tells the SPA which partial to load
+   * @param $routeProvider
+   */
+  function($routeProvider) {
+    $routeProvider.
+      when('/', {
+        templateUrl: 'js/app/partials/personal-details.html'
+      }).
+      when('/payment-details', {
+        templateUrl: 'js/app/partials/payment-details.html'
+      }).
+      otherwise({
+        redirectTo: '/'
+      });
+  }]);
+
 
 //Controllers
 
-oshcPrototypeApp.controller('oshcPrototypeCtrl', ['$scope', 'Country',
+var oshcPrototypeControllers = angular.module('oshcPrototypeControllers', []);
+
+oshcPrototypeControllers.controller('PaymentDetailsCtrl', ['$scope', '$routeParams',
+  function($scope, $routeParams) {
+
+  }]);
+
+oshcPrototypeControllers.controller('oshcPrototypeCtrl', ['$scope', 'Country',
   function($scope, Country) {
     $scope.countries = Country.query();
   }]);
+
+
 
 //Services
 
